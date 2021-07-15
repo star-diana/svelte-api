@@ -1,5 +1,5 @@
 const Axios = require('axios');
-import to from 'src/utils/to.js';
+import to from '../../src/utils/to.js';
 
 const axios = Axios.create({
   responseType: 'json',
@@ -16,6 +16,10 @@ const getBilibiliFollower = async (uid) => {
 
 module.exports = async (request, response) => {
   const [error, result] = await to(getBilibiliFollower(672328094));
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type, Content-Length, Authorization, Accept,X-Requested-With");
+  response.setHeader('Access-Control-Allow-Credentials', true);
+  response.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   if(error){
     response.status(error.response.status).send(error.response.data);
   }else{
