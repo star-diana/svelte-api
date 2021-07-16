@@ -22,7 +22,7 @@ module.exports = async (request, response) => {
   response.setHeader('Access-Control-Allow-Credentials', true);
   response.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   if (error) {
-    response.status(error.response.status).send(error.response.data);
+    response.status(error?.response?.status ?? 504).send(error?.response?.data ?? error.message);
   } else {
     response.status(result.status).send(result.data);
   }
