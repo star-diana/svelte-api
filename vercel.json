@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/vercel/:match*", "destination": "/api/:match*" }
+  ]
+}
